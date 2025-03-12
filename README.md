@@ -7,12 +7,19 @@ import random
 import matplotlib.pyplot as plt
 
 class GameAgent:
+
     def __init__(self, secret_number, max_attempts=5):
+    
         self.secret_number = secret_number
+        
         self.max_attempts = max_attempts
+        
         self.attempts = 0
+        
         self.state = "Esperando tentativa"
+        
         self.history = []  # Histórico de tentativas
+        
 
     def make_guess(self, guess):
         self.attempts += 1
