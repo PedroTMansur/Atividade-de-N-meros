@@ -62,10 +62,15 @@ import random
 import matplotlib.pyplot as plt
 
 def selecionar_dificuldade():
+
     dificuldades = {
+    
         "1": ("Fácil", 10, None, False, False),
+        
         "2": ("Médio - Apenas Pares", 50, None, False, True),
+        
         "3": ("Difícil - Apenas Primos", 100, 7, True, False)
+        
     }
 
     print("Selecione a dificuldade:")
@@ -75,19 +80,28 @@ def selecionar_dificuldade():
     escolha = input("Digite o número da dificuldade desejada: ")
 
     while escolha not in dificuldades:
+    
         print("Opção inválida! Tente novamente.")
+        
         escolha = input("Digite o número da dificuldade desejada: ")
 
     print(f"Você escolheu: {dificuldades[escolha][0]}")
     return dificuldades[escolha]
 
 def gerar_numero_secreto(range_max, apenas_impares_e_primos, apenas_pares):
+
     def is_prime(n):
+    
         if n < 2:
+        
             return False
+            
         for i in range(2, int(n ** 0.5) + 1):
+        
             if n % i == 0:
+            
                 return False
+                
         return True
 
     if apenas_impares_e_primos:
@@ -123,12 +137,19 @@ class GameAgent:
             return "Tente um número menor."
 
 def plot_attempts(agent):
+
     plt.plot(range(1, len(agent.guess_history) + 1), agent.guess_history, marker='o', linestyle='-')
+    
     plt.axhline(y=agent.secret_number, color='r', linestyle='--', label='Número Secreto')
+    
     plt.xlabel("Tentativas")
+    
     plt.ylabel("Palpites")
+    
     plt.title("Histórico de Tentativas")
+    
     plt.legend()
+    
     plt.show()
 
 dificuldade, range_max, max_attempts, apenas_impares_e_primos, apenas_pares = selecionar_dificuldade()
@@ -136,9 +157,15 @@ dificuldade, range_max, max_attempts, apenas_impares_e_primos, apenas_pares = se
 agent = GameAgent(secret_number=gerar_numero_secreto(range_max, apenas_impares_e_primos, apenas_pares), max_attempts=max_attempts)
 
 while agent.state not in ["Acertou!", "Fim do jogo"]:
+
     try:
+    
         guess = int(input(f"Digite um número entre 1 e {range_max}: "))
+        
         print(agent.make_guess(guess))
+        
     except ValueError:
+    
         print("Por favor, digite um número válido.")
+        
 plot_attempts(agent)
