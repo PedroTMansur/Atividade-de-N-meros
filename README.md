@@ -115,11 +115,17 @@ def gerar_numero_secreto(range_max, apenas_impares_e_primos, apenas_pares):
     return random.randint(1, range_max)
 
 class GameAgent:
+
     def __init__(self, secret_number, max_attempts=None):
+    
         self.secret_number = secret_number
+        
         self.attempts = 0
+        
         self.max_attempts = max_attempts
+        
         self.state = "Jogando"
+        
         self.guess_history = []
 
     def make_guess(self, guess):
