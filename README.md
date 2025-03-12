@@ -40,16 +40,25 @@ class GameAgent:
             import matplotlib.pyplot as plt
 
 def plot_attempts(agent):
+
     plt.figure(figsize=(8,5))
+    
     plt.plot(range(1, len(agent.history) + 1), agent.history, marker='o', linestyle='-')
+    
     plt.axhline(y=agent.secret_number, color='r', linestyle='--', label='Número Secreto')
+    
     plt.xlabel("Tentativas")
+    
     plt.ylabel("Valor do Palpite")
+    
     plt.title("Evolução das Tentativas do Jogador")
+    
     plt.legend()
+    
     plt.show()
 
-    import random
+import random
+
 import matplotlib.pyplot as plt
 
 def selecionar_dificuldade():
