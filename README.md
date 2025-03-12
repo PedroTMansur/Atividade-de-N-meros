@@ -3,6 +3,7 @@
 !pip install matplotlib
 
 import random
+
 import matplotlib.pyplot as plt
 
 class GameAgent:
